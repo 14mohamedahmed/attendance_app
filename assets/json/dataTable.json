@@ -119,6 +119,66 @@
                     "check-out": true
                 }
             ]
+        },
+        {
+            "attendance_date": "7/10/2020",
+            "attendance_time": "8:30 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "7/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        },
+        {
+            "attendance_date": "8/10/2020",
+            "attendance_time": "8:30 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "8/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        },
+        {
+            "attendance_date": "9/10/2020",
+            "attendance_time": "8:30 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "9/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
         }
     ]
 }

@@ -1,0 +1,124 @@
+{
+    "results": [
+        {
+            "attendance_date": "1/10/2020",
+            "attendance_time": "8:00 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "1/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        },
+        {
+            "attendance_date": "2/10/2020",
+            "attendance_time": "8:30 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "2/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        },
+        {
+            "attendance_date": "3/10/2020",
+            "attendance_time": "8:00 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "3/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        },
+        {
+            "attendance_date": "4/10/2020",
+            "attendance_time": "8:30 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "4/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        },
+        {
+            "attendance_date": "5/10/2020",
+            "attendance_time": "8:00 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "5/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        },
+        {
+            "attendance_date": "6/10/2020",
+            "attendance_time": "8:30 AM",
+            "attendanceType": [
+                {
+                    "check-in": true,
+                    "check-out": false
+                }
+            ]
+        },
+        {
+            "attendance_date": "6/10/2020",
+            "attendance_time": "5:00 PM",
+            "attendanceType": [
+                {
+                    "check-in": false,
+                    "check-out": true
+                }
+            ]
+        }
+    ]
+}

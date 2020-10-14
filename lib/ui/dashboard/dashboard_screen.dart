@@ -1,4 +1,5 @@
 import 'package:attendance_app/provider/data_table_provider.dart';
+import 'package:attendance_app/ui/dashboard/component/build_drawer.dart';
 import 'package:attendance_app/ui/dashboard/component/build_table.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,7 @@ class DashboardScreen extends StatelessWidget {
           style: TextStyle(color: Color(0xFFFD6C6E), letterSpacing: 2),
         ),
         centerTitle: true,
+        iconTheme: IconThemeData(color: Theme.of(context).accentColor),
         actions: [
           Padding(
             padding: const EdgeInsets.all(5.0),
@@ -29,6 +31,7 @@ class DashboardScreen extends StatelessWidget {
           ),
         ],
       ),
+      drawer: BuildDrawer(),
       body: ChangeNotifierProvider<DataTableProvider>(
         create: (context) => DataTableProvider(),
         child: Consumer<DataTableProvider>(

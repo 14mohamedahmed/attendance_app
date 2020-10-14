@@ -10,13 +10,13 @@ class BuildTable extends StatelessWidget {
   Widget build(BuildContext context) {
     AppConfig().init(context);
     final columnTextStyle = TextStyle(
-        fontSize: AppConfig.blockSizeVertical * 2.5,
-        fontWeight: FontWeight.bold);
+      fontSize: AppConfig.blockSizeVertical * 2.5,
+      fontWeight: FontWeight.bold,
+    );
     final rowTextStyle = TextStyle(
       fontSize: AppConfig.blockSizeVertical * 2.5,
     );
     final attendedTimeLeave = TextStyle(
-      color: Colors.black,
       fontSize: AppConfig.blockSizeVertical * 2.5,
     );
     final attendedCheckFalse = TextStyle(

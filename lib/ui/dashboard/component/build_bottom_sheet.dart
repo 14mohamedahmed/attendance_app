@@ -1,11 +1,12 @@
 import 'package:attendance_app/appConfig/app_config.dart';
+import 'package:attendance_app/provider/dashboard_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class BuildBottomSheet extends StatelessWidget {
-  final dashboardProvider;
   final Function getImage;
-  BuildBottomSheet({this.dashboardProvider, this.getImage});
+  BuildBottomSheet({this.getImage});
   @override
   Widget build(BuildContext context) {
     AppConfig().init(context);
@@ -25,6 +26,8 @@ class BuildBottomSheet extends StatelessWidget {
     context,
     @required String title,
   }) {
+    final dashboardProvider =
+        Provider.of<DashboardProvider>(context, listen: false);
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pop();

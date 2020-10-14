@@ -19,8 +19,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final dashboardProvider =
-        Provider.of<DashboardProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -45,7 +43,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ),
                 context: context,
                 builder: (builder) => BuildBottomSheet(
-                  dashboardProvider: dashboardProvider,
                   getImage: (value) {
                     setState(() {
                       _pickedImage = value;

@@ -1,16 +1,13 @@
 import 'dart:convert';
-import 'dart:io';
-
-import 'package:attendance_app/abstract/img_picker_abstract.dart';
 import 'package:attendance_app/models/data_table_model.dart';
+import 'package:attendance_app/packages/implement_plugins/img_picker_plugin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 
-class DashboardProvider extends ChangeNotifier implements ImagePickerAbstract {
+class DashboardProvider extends ChangeNotifier {
   DataTableModel _data;
   DataTableModel get getTabelData => _data;
-  File image;
-  final _picker = ImagePicker();
+  ImagePickerPlugin imagePickerPlugin = ImagePickerPlugin();
 
   Future getData(context) async {
     final response = await DefaultAssetBundle.of(context)
@@ -20,12 +17,7 @@ class DashboardProvider extends ChangeNotifier implements ImagePickerAbstract {
     notifyListeners();
   }
 
-  @override
-  Future<File> getImagePicker(ImageSource imagesource) async {
-    final pickedFile = await _picker.getImage(source: imagesource);
-    if (pickedFile != null) {
-      image = File(pickedFile.path);
-    }
-    return image;
+  Future<void> getImagePicker(ImageSource imageSource) async {
+    return imagePickerPlugin.fetchImage(imageSource);
   }
 }

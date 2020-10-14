@@ -15,12 +15,14 @@ class DataTableModel {
 
 class Results {
   String attendanceDate;
-  String attendanceTime;
+  String attendTime;
+  String leaveTime;
   List<AttendanceType> attendanceType;
 
   Results.fromJson(Map<String, dynamic> json) {
     attendanceDate = json['attendance_date'];
-    attendanceTime = json['attendance_time'];
+    attendTime = json['attend_time'];
+    leaveTime = json['leave_time'];
     if (json['attendanceType'] != null) {
       attendanceType = toListofAttendanceType(json['attendanceType']);
     }

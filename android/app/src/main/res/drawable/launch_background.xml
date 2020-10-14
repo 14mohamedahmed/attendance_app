@@ -7,6 +7,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/auth_attendance_square" />
+            android:src="@drawable/auth_attendance" />
     </item>
 </layer-list>

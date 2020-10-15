@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:attendance_app/provider/dashboard_provider.dart';
-import 'package:attendance_app/ui/dashboard/component/build_bottom_sheet.dart';
 import 'package:attendance_app/ui/dashboard/component/build_drawer.dart';
 import 'package:attendance_app/ui/dashboard/component/build_table.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +14,21 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  File _pickedImage;
+  DashboardProvider _dashboardProvider;
+  var _imagePath;
+  @override
+  void initState() {
+    _dashboardProvider = Provider.of<DashboardProvider>(context, listen: false);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _dashboardProvider.getUserImage('imagePicked').then((value) {
+      setState(() {
+        _imagePath = value;
+      });
+    });
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -33,32 +43,22 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           GestureDetector(
             onTap: () {
-              showModalBottomSheet(
-                backgroundColor: Colors.black.withOpacity(0.8),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                  ),
-                ),
-                context: context,
-                builder: (builder) => BuildBottomSheet(
-                  getImage: (value) {
-                    setState(() {
-                      _pickedImage = value;
-                    });
-                  },
-                ),
-              );
+              //nothing to do for now
             },
             child: Padding(
               padding: const EdgeInsets.all(5.0),
-              child: CircleAvatar(
-                backgroundColor: Theme.of(context).accentColor,
-                backgroundImage: _pickedImage == null
-                    ? AssetImage('assets/images/profile_pic.png')
-                    : FileImage(_pickedImage),
-                radius: 40,
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: _imagePath == null
+                        ? AssetImage('assets/images/profile_pic.png')
+                        : FileImage(File(_imagePath)),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           ),

@@ -5,8 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
 class BuildBottomSheet extends StatelessWidget {
-  final Function getImage;
-  BuildBottomSheet({this.getImage});
   @override
   Widget build(BuildContext context) {
     AppConfig().init(context);
@@ -33,12 +31,13 @@ class BuildBottomSheet extends StatelessWidget {
         Navigator.of(context).pop();
         if (title == 'Gallery')
           dashboardProvider.getImagePicker(ImageSource.gallery).then((value) {
-            getImage(value);
+            // save user image in shared preferences
+            dashboardProvider.setUserImagePreference('imagePicked', value.path);
           });
         else {
           dashboardProvider.getImagePicker(ImageSource.camera).then((value) {
-            // pass picked image to pervious page.
-            getImage(value);
+            // save user image in shared preferences
+            dashboardProvider.setUserImagePreference('imagePicked', value.path);
           });
         }
       },

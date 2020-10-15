@@ -24,7 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _dashboardProvider.getUserImage('imagePicked').then((value) {
+    _dashboardProvider.getUserImage(key: 'imagePicked').then((value) {
       setState(() {
         _imagePath = value;
       });

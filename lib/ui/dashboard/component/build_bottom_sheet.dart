@@ -32,12 +32,18 @@ class BuildBottomSheet extends StatelessWidget {
         if (title == 'Gallery')
           dashboardProvider.getImagePicker(ImageSource.gallery).then((value) {
             // save user image in shared preferences
-            dashboardProvider.setUserImagePreference('imagePicked', value.path);
+            dashboardProvider.setUserImagePreference(
+              key: 'imagePicked',
+              pickedImage: value.path,
+            );
           });
         else {
           dashboardProvider.getImagePicker(ImageSource.camera).then((value) {
             // save user image in shared preferences
-            dashboardProvider.setUserImagePreference('imagePicked', value.path);
+            dashboardProvider.setUserImagePreference(
+              key: 'imagePicked',
+              pickedImage: value.path,
+            );
           });
         }
       },

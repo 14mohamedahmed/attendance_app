@@ -15,7 +15,6 @@ class BuildDrawer extends StatefulWidget {
 class _BuildDrawerState extends State<BuildDrawer> {
   var _imagePath;
   var _userEmail;
-  var _compantId;
   DashboardProvider _dashboardProvider;
   @override
   void initState() {
@@ -28,7 +27,6 @@ class _BuildDrawerState extends State<BuildDrawer> {
     final mouleRoute =
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     _userEmail = mouleRoute['email'];
-    _compantId = mouleRoute['companyId'];
     super.didChangeDependencies();
   }
 
@@ -173,7 +171,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
             Icon(
               icon,
               size: AppConfig.blockSizeVertical * 4.5,
-              color: Colors.deepPurpleAccent,
+              color: Theme.of(context).accentColor,
             ),
           ],
         ),

@@ -14,6 +14,8 @@ class BuildDrawer extends StatefulWidget {
 
 class _BuildDrawerState extends State<BuildDrawer> {
   var _imagePath;
+  var _userEmail;
+  var _compantId;
   DashboardProvider _dashboardProvider;
   @override
   void initState() {
@@ -22,8 +24,17 @@ class _BuildDrawerState extends State<BuildDrawer> {
   }
 
   @override
+  void didChangeDependencies() {
+    final mouleRoute =
+        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
+    _userEmail = mouleRoute['email'];
+    _compantId = mouleRoute['companyId'];
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    _dashboardProvider.getUserImage(key: 'imagePicked').then((value) {
+    _dashboardProvider.getUserInfoPreference(key: 'imagePicked').then((value) {
       setState(() {
         _imagePath = value;
       });
@@ -56,12 +67,16 @@ class _BuildDrawerState extends State<BuildDrawer> {
                 SizedBox(width: 10),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'UserEmail',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: AppConfig.blockSizeVertical * 3),
+                    Container(
+                      width: 180,
+                      child: Text(
+                        _userEmail,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: AppConfig.blockSizeVertical * 2.5),
+                      ),
                     ),
                     SizedBox(height: 2),
                     GestureDetector(

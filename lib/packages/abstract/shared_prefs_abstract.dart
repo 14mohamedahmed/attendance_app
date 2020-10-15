@@ -1,4 +1,4 @@
 abstract class SharedPrefsAbstract {
-  void saveImagePreference(String key, String pickedImage);
-  Future<String> getImagePreference(String key);
+  void saveUserInfoPreference(String key, String pickedImage);
+  Future<String> getUserInfoPreference(String key);
 }

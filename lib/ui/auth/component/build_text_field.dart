@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 
 class BuildTextField extends StatefulWidget {
   final Function validator;
+  final Function onsaved;
   final String labelText;
   final String hintText;
   final IconData leadingIcon;
   BuildTextField({
     @required this.validator,
+    this.onsaved,
     @required this.labelText,
     @required this.hintText,
     @required this.leadingIcon,
@@ -27,6 +29,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
           EdgeInsets.symmetric(horizontal: AppConfig.blockSizeHorizontal * 10),
       child: TextFormField(
         validator: widget.validator,
+        onSaved: widget.onsaved,
         cursorColor: Colors.white,
         cursorWidth: 3,
         obscureText:
@@ -36,7 +39,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
         textInputAction: widget.labelText == 'Password'
             ? TextInputAction.done
             : TextInputAction.next,
-        keyboardType: widget.labelText == 'Email/UserName'
+        keyboardType: widget.labelText == 'Email'
             ? TextInputType.emailAddress
             : TextInputType.visiblePassword,
         decoration: InputDecoration(

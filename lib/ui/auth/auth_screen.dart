@@ -3,9 +3,18 @@ import 'package:attendance_app/ui/auth/component/build_text_field.dart';
 import 'package:attendance_app/ui/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
   static final String routeName = '/authScreen';
+
+  @override
+  _AuthScreenState createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
   final _loginFormKey = GlobalKey<FormState>();
+  var _userEmail = '';
+  var _companyId = '';
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -28,19 +37,35 @@ class AuthScreen extends StatelessWidget {
                   ),
                   SizedBox(height: size.height * 0.04),
                   BuildTextField(
+                    onsaved: (value) {
+                      setState(() {
+                        _userEmail = value;
+                      });
+                    },
                     validator: (value) {
-                      if (value.trim() == '' || !value.contains('@'))
-                        return 'Email must contains @';
+                      if (value.trim() == '' ||
+                          !value.contains('@') ||
+                          !value.contains('.') ||
+                          value == '@') {
+                        return value == '@'
+                            ? 'Email not Valid'
+                            : 'Email must contains @ and .';
+                      }
                       return null;
                     },
-                    labelText: 'Email/UserName',
-                    hintText: 'Enter Your Email/UserName',
+                    labelText: 'Email',
+                    hintText: 'Enter Your Email',
                     leadingIcon: Icons.person, //home_work_outlined
                   ),
                   SizedBox(
                     height: size.height * 0.02,
                   ),
                   BuildTextField(
+                    onsaved: (value) {
+                      setState(() {
+                        _companyId = value;
+                      });
+                    },
                     validator: (value) {
                       if (value.trim() == '') return 'Enter Valid Company ID';
                       return null;
@@ -65,10 +90,13 @@ class AuthScreen extends StatelessWidget {
                     onTap: () {
                       FocusScope.of(context).unfocus();
                       if (_loginFormKey.currentState.validate()) {
-                        // Navigate to other page
                         _loginFormKey.currentState.save();
-                        Navigator.of(context)
-                            .pushReplacementNamed(DashboardScreen.routeName);
+                        Navigator.of(context).pushReplacementNamed(
+                            DashboardScreen.routeName,
+                            arguments: {
+                              'email': _userEmail,
+                              'compnayId': _companyId,
+                            });
                       }
                     },
                     child: Container(

@@ -26,12 +26,13 @@ class DashboardProvider extends ChangeNotifier {
   }
 
   // save user image locally
-  Future<void> setUserImagePreference({String key, String pickedImage}) async {
-    return _sharedPrefsPlugin.saveImagePreference(key, pickedImage);
+  Future<void> setUserInfoPreference(
+      {@required String key, @required String info}) async {
+    return _sharedPrefsPlugin.saveUserInfoPreference(key, info);
   }
 
   // get user image
-  Future<String> getUserImage({String key}) async {
-    return _sharedPrefsPlugin.getImagePreference(key);
+  Future<String> getUserInfoPreference({@required String key}) async {
+    return _sharedPrefsPlugin.getUserInfoPreference(key);
   }
 }

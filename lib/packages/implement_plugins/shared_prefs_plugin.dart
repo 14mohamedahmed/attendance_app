@@ -15,4 +15,10 @@ class SharedPrefsPlugin implements SharedPrefsAbstract {
     SharedPreferences saveUserImage = await SharedPreferences.getInstance();
     saveUserImage.setString(key, pickedImage);
   }
+
+  @override
+  void clearInfoPreference() async {
+    SharedPreferences saveUserImage = await SharedPreferences.getInstance();
+    saveUserImage.clear();
+  }
 }

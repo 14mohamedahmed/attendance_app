@@ -10,17 +10,20 @@ class BuildTable extends StatelessWidget {
   Widget build(BuildContext context) {
     AppConfig().init(context);
     final columnTextStyle = TextStyle(
+      color: Colors.white,
       fontSize: AppConfig.blockSizeVertical * 2.5,
       fontWeight: FontWeight.bold,
     );
     final rowTextStyle = TextStyle(
+      color: Colors.white,
       fontSize: AppConfig.blockSizeVertical * 2.5,
     );
     final attendedTimeLeave = TextStyle(
+      color: Colors.white,
       fontSize: AppConfig.blockSizeVertical * 2.5,
     );
     final attendedCheckFalse = TextStyle(
-      color: Colors.black,
+      color: Colors.white,
       fontWeight: FontWeight.bold,
     );
     return NotificationListener<OverscrollIndicatorNotification>(
@@ -29,9 +32,11 @@ class BuildTable extends StatelessWidget {
         return null;
       },
       child: Scrollbar(
+        thickness: 1,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Scrollbar(
+            thickness: 1,
             child: SingleChildScrollView(
               child: Padding(
                 padding: EdgeInsets.all(20.0),

@@ -44,4 +44,9 @@ class DashboardProvider extends ChangeNotifier {
   Future<String> getUserInfoPreference({@required String key}) async {
     return _sharedPrefsPlugin.getUserInfoPreference(key);
   }
+
+  // clear user Information
+  Future<void> clearInfoPreference() async {
+    return _sharedPrefsPlugin.clearInfoPreference();
+  }
 }

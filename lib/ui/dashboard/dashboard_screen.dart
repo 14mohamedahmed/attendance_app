@@ -30,10 +30,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       });
     });
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 5,
+        backgroundColor: Color(0xFF0A0E21),
+        elevation: 0,
         title: Text(
           'Dashboard',
           style: TextStyle(color: Color(0xFFFD6C6E), letterSpacing: 2),

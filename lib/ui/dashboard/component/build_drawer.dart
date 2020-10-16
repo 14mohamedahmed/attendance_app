@@ -111,10 +111,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
               ),
             ),
             drawerField(
-              onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.of(context).pushReplacementNamed(AuthScreen.routeName);
-              },
+              onTap: () {},
               title: 'Setting',
               icon: Icons.settings,
               context: context,
@@ -123,10 +120,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
               color: Colors.grey[900],
             ),
             drawerField(
-              onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.of(context).pushReplacementNamed(AuthScreen.routeName);
-              },
+              onTap: () {},
               title: 'About App',
               icon: Icons.phone_android,
               context: context,

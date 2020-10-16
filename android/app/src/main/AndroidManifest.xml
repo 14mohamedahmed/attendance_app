@@ -8,7 +8,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="attendance_app"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@drawable/auth_attendance">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

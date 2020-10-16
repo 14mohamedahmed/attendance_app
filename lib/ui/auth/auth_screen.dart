@@ -76,29 +76,19 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   SizedBox(height: size.height * 0.02),
                   BuildTextField(
-                    validator: (value) {
+                    validator: (value) {r
                       if (value.trim() == '' || value.length < 6)
                         return 'password must be at least 6 charcters';
                       return null;
                     },
+                    onEditingComplete: onSubmit,
                     labelText: 'Password',
                     hintText: 'Enter Your Password',
                     leadingIcon: Icons.lock,
                   ),
                   SizedBox(height: size.height * 0.03),
                   GestureDetector(
-                    onTap: () {
-                      FocusScope.of(context).unfocus();
-                      if (_loginFormKey.currentState.validate()) {
-                        _loginFormKey.currentState.save();
-                        Navigator.of(context).pushReplacementNamed(
-                            DashboardScreen.routeName,
-                            arguments: {
-                              'email': _userEmail,
-                              'compnayId': _companyId,
-                            });
-                      }
-                    },
+                    onTap: onSubmit,
                     child: Container(
                       padding: EdgeInsets.all(10),
                       alignment: Alignment.center,
@@ -124,5 +114,17 @@ class _AuthScreenState extends State<AuthScreen> {
         ),
       ),
     );
+  }
+
+  void onSubmit() {
+    FocusScope.of(context).unfocus();
+    if (_loginFormKey.currentState.validate()) {
+      _loginFormKey.currentState.save();
+      Navigator.of(context)
+          .pushReplacementNamed(DashboardScreen.routeName, arguments: {
+        'email': _userEmail,
+        'compnayId': _companyId,
+      });
+    }
   }
 }

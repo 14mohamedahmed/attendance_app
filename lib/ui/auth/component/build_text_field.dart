@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 class BuildTextField extends StatefulWidget {
   final Function validator;
   final Function onsaved;
+  final Function onEditingComplete;
   final String labelText;
   final String hintText;
   final IconData leadingIcon;
   BuildTextField({
     @required this.validator,
     this.onsaved,
+    this.onEditingComplete,
     @required this.labelText,
     @required this.hintText,
     @required this.leadingIcon,
@@ -30,6 +32,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
       child: TextFormField(
         validator: widget.validator,
         onSaved: widget.onsaved,
+        onEditingComplete: widget.onEditingComplete,
         cursorColor: Colors.white,
         cursorWidth: 3,
         obscureText:
@@ -37,7 +40,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
         style: TextStyle(
             color: Colors.white, fontSize: AppConfig.blockSizeVertical * 2.5),
         textInputAction: widget.labelText == 'Password'
-            ? TextInputAction.done
+            ? TextInputAction.go
             : TextInputAction.next,
         keyboardType: widget.labelText == 'Email'
             ? TextInputType.emailAddress

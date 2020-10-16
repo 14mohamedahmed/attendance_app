@@ -76,7 +76,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   SizedBox(height: size.height * 0.02),
                   BuildTextField(
-                    validator: (value) {r
+                    validator: (value) {
                       if (value.trim() == '' || value.length < 6)
                         return 'password must be at least 6 charcters';
                       return null;

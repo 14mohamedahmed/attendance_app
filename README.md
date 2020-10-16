@@ -1,16 +1,19 @@
 # attendance_app
 
-A new Flutter project.
+this app is showing the attendance date and time of the user.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+-- The application start with authentication  page, user can log in after filling his information (Email,Company Id,Password).  
+-- Authentication Screen
+-- After log in the application will push you to Dashboard Screen that contain attendance of the user (attendance Date,Time and type).
 
-A few resources to get you started if this is your first Flutter project:
+-- user can change the profile photo using camera or gallery.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+-- Tools
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1- Provider 
+
+2- Image Picker
+
+3- Shared Preference

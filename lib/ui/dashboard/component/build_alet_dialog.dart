@@ -29,7 +29,7 @@ class BuildAlertDialog extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).pop();
-        if (title == 'Gallery')
+        if (title == 'Gallery') {
           dashboardProvider.getImagePicker(ImageSource.gallery).then((value) {
             // save user image in shared preferences
             if (value != null) {
@@ -45,7 +45,7 @@ class BuildAlertDialog extends StatelessWidget {
               });
             }
           });
-        else {
+        } else {
           dashboardProvider.getImagePicker(ImageSource.camera).then((value) {
             // save user image in shared preferences
             if (value != null) {

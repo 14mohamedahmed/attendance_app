@@ -95,7 +95,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
                               ),
                               content: BuildAlertDialog(),
                             ),
-                          ).then((value) => Navigator.of(context).pop());
+                          );
                         },
                         child: Text(
                           'Change Profile',

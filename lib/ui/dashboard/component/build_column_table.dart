@@ -14,10 +14,12 @@ class BuildColumnTable extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
-      height: 40,
-      width: 180,
+      height: size.height * 0.2,
+      width: size.width * 0.4,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(headText, style: columnTextStyle, textAlign: TextAlign.center),
           Row(

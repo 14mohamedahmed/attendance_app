@@ -44,7 +44,7 @@ class BuildTable extends StatelessWidget {
                   data: Theme.of(context)
                       .copyWith(dividerColor: Color(0xFFF2769A)),
                   child: DataTable(
-                    columnSpacing: 20,
+                    columnSpacing: AppConfig.blockSizeVertical * 4,
                     dividerThickness: 1,
                     columns: [
                       DataColumn(
@@ -62,9 +62,9 @@ class BuildTable extends StatelessWidget {
                       ),
                       DataColumn(
                         label: BuildColumnTable(
-                          headText: 'Attendance Type',
-                          subTextL: 'check-in',
-                          subTextR: 'check-out',
+                          headText: 'Check Attendance',
+                          subTextL: 'In',
+                          subTextR: 'Out',
                           columnTextStyle: columnTextStyle,
                         ),
                       ),

@@ -14,6 +14,7 @@ class DashboardProvider extends ChangeNotifier {
   ImagePickerPlugin _imagePickerPlugin = ImagePickerPlugin();
   SharedPrefsPlugin _sharedPrefsPlugin = SharedPrefsPlugin();
   HTTPPlugin _httpPlugin = HTTPPlugin();
+
   // fetch attendance information from json file
   Future getData(context) async {
     final response = await DefaultAssetBundle.of(context)

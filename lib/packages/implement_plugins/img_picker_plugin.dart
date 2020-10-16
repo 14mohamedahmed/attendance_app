@@ -12,7 +12,8 @@ class ImagePickerPlugin implements ImagePickerAbstract {
     final pickedFile = await _picker.getImage(source: imagesource);
     if (pickedFile != null) {
       _image = File(pickedFile.path);
+      return _image;
     }
-    return _image;
+    return null;
   }
 }

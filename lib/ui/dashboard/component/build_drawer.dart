@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:attendance_app/appConfig/app_config.dart';
 import 'package:attendance_app/provider/dashboard_provider.dart';
 import 'package:attendance_app/ui/auth/auth_screen.dart';
-import 'package:attendance_app/ui/dashboard/component/build_bottom_sheet.dart';
+import 'package:attendance_app/ui/dashboard/component/build_alet_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -79,17 +79,21 @@ class _BuildDrawerState extends State<BuildDrawer> {
                     SizedBox(height: 2),
                     GestureDetector(
                       onTap: () {
-                        showModalBottomSheet(
-                          backgroundColor: Colors.black.withOpacity(0.8),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30.0),
-                              topRight: Radius.circular(30.0),
-                            ),
-                          ),
+                        showDialog(
                           context: context,
-                          builder: (builder) => BuildBottomSheet(),
-                        );
+                          builder: (context) => AlertDialog(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0)),
+                            title: Text(
+                              'Choose',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: AppConfig.blockSizeVertical * 3,
+                              ),
+                            ),
+                            content: BuildAlertDialog(),
+                          ),
+                        ).then((value) => Navigator.of(context).pop());
                       },
                       child: Text(
                         'Change Profile',

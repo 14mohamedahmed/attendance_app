@@ -115,7 +115,6 @@ class _AuthScreenState extends State<AuthScreen> {
     FocusScope.of(context).unfocus();
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
-
       Navigator.of(context)
           .pushReplacementNamed(DashboardScreen.routeName, arguments: {
         'email': _userEmail,

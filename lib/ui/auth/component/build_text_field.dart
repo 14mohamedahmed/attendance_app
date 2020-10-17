@@ -1,5 +1,7 @@
 import 'package:attendance_app/appConfig/app_config.dart';
+import 'package:attendance_app/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BuildTextField extends StatefulWidget {
   final Function validator;
@@ -25,6 +27,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
   bool _isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
     AppConfig().init(context);
     return Padding(
       padding:
@@ -37,8 +40,10 @@ class _BuildTextFieldState extends State<BuildTextField> {
         cursorWidth: 3,
         obscureText:
             widget.labelText == 'Password' ? !_isPasswordVisible : false,
-        style: TextStyle(
-            color: Colors.white, fontSize: AppConfig.blockSizeVertical * 2.5),
+        style: Theme.of(context)
+            .textTheme
+            .headline3
+            .copyWith(fontSize: AppConfig.blockSizeVertical * 2.5),
         textInputAction: widget.labelText == 'Password'
             ? TextInputAction.go
             : TextInputAction.next,
@@ -49,7 +54,9 @@ class _BuildTextFieldState extends State<BuildTextField> {
           labelText: widget.labelText,
           labelStyle: TextStyle(fontSize: AppConfig.blockSizeVertical * 2.5),
           hintText: widget.hintText,
-          hintStyle: TextStyle(fontSize: AppConfig.blockSizeVertical * 2),
+          hintStyle: Theme.of(context).textTheme.headline4.copyWith(
+                fontSize: AppConfig.blockSizeVertical * 2.5,
+              ),
           errorStyle: TextStyle(fontSize: AppConfig.blockSizeVertical * 2),
           border: OutlineInputBorder(
               borderSide: BorderSide(color: Theme.of(context).accentColor),
@@ -60,7 +67,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
           ),
           prefixIcon: Icon(
             widget.leadingIcon,
-            color: Colors.yellow,
+            color: themeProvider.getleadingTextFieldColor,
           ),
           suffixIcon: widget.labelText == 'Password'
               ? GestureDetector(
@@ -73,7 +80,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
                     _isPasswordVisible
                         ? Icons.remove_red_eye_outlined
                         : Icons.remove_red_eye,
-                    color: Colors.yellow,
+                    color: themeProvider.getleadingTextFieldColor,
                   ),
                 )
               : null,

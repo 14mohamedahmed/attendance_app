@@ -14,18 +14,18 @@ class BuildTable extends StatelessWidget {
       fontSize: AppConfig.blockSizeVertical * 2.5,
       fontWeight: FontWeight.bold,
     );
-    final rowTextStyle = TextStyle(
-      color: Colors.white,
-      fontSize: AppConfig.blockSizeVertical * 2.5,
-    );
-    final attendedTimeLeave = TextStyle(
-      color: Colors.white,
-      fontSize: AppConfig.blockSizeVertical * 2.5,
-    );
-    final attendedCheckFalse = TextStyle(
-      color: Colors.white,
-      fontWeight: FontWeight.bold,
-    );
+    final rowTextStyle = Theme.of(context)
+        .textTheme
+        .headline3
+        .copyWith(fontSize: AppConfig.blockSizeVertical * 2.5);
+    final attendedTimeLeave = Theme.of(context)
+        .textTheme
+        .headline3
+        .copyWith(fontSize: AppConfig.blockSizeVertical * 2.5);
+    final attendedCheckFalse = Theme.of(context).textTheme.headline3.copyWith(
+          fontSize: AppConfig.blockSizeVertical * 2.5,
+          fontWeight: FontWeight.bold,
+        );
     return NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (overscroll) {
         overscroll.disallowGlow();

@@ -97,14 +97,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         color: Theme.of(context).accentColor,
                       ),
                       width: size.width / 2,
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: AppConfig.blockSizeVertical * 3,
-                        ),
-                      ),
+                      child: Text('Login',
+                          style: Theme.of(context).textTheme.button.copyWith(
+                              fontSize: AppConfig.blockSizeVertical * 3)),
                     ),
                   ),
                 ],
@@ -116,10 +111,11 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
-  void onSubmit() {
+  void onSubmit() async {
     FocusScope.of(context).unfocus();
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
+
       Navigator.of(context)
           .pushReplacementNamed(DashboardScreen.routeName, arguments: {
         'email': _userEmail,

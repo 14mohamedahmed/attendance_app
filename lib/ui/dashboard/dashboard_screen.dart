@@ -24,14 +24,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _dashboardProvider.getUserInfoPreference(key: 'imagePicked').then((value) {
+    _dashboardProvider.getUserImagePreference(key: 'imagePicked').then((value) {
       setState(() {
         _imagePath = value;
       });
     });
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF0A0E21),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
         title: Text(
           'Dashboard',
@@ -40,23 +40,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
         actions: [
-          GestureDetector(
-            onTap: () {
-              //nothing to do for now
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: _imagePath == null
-                        ? AssetImage('assets/images/profile_pic.png')
-                        : FileImage(File(_imagePath)),
-                    fit: BoxFit.cover,
-                  ),
+          Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: _imagePath == null
+                      ? AssetImage('assets/images/profile_pic.png')
+                      : FileImage(File(_imagePath)),
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

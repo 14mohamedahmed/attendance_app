@@ -1,12 +1,19 @@
 import 'package:attendance_app/provider/dashboard_provider.dart';
+import 'package:attendance_app/provider/theme_provider.dart';
 import 'package:attendance_app/ui/auth/auth_screen.dart';
 import 'package:attendance_app/ui/dashboard/dashboard_screen.dart';
+import 'package:attendance_app/ui/setting/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(true),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -18,21 +25,17 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => DashboardProvider(),
-        )
+        ),
       ],
       child: MaterialApp(
         title: 'Attendance App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: Color(0xFFF2769A),
-          scaffoldBackgroundColor: Color(0xFF0A0E21),
-          hintColor: Colors.white,
-          accentColor: Color(0xFFFD6C6E),
-        ),
+        theme: Provider.of<ThemeProvider>(context).getTheme(context),
         initialRoute: AuthScreen.routeName,
         routes: {
           AuthScreen.routeName: (context) => AuthScreen(),
           DashboardScreen.routeName: (context) => DashboardScreen(),
+          SettingScreen.routeName: (context) => SettingScreen(),
         },
       ),
     );

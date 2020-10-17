@@ -34,7 +34,7 @@ class BuildAlertDialog extends StatelessWidget {
             // save user image in shared preferences
             if (value != null) {
               dashboardProvider
-                  .setUserInfoPreference(
+                  .setUserImagePreference(
                 key: 'imagePicked',
                 info: value.path,
               )
@@ -50,7 +50,7 @@ class BuildAlertDialog extends StatelessWidget {
             // save user image in shared preferences
             if (value != null) {
               dashboardProvider
-                  .setUserInfoPreference(
+                  .setUserImagePreference(
                 key: 'imagePicked',
                 info: value.path,
               )

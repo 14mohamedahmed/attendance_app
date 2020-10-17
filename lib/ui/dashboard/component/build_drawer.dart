@@ -4,6 +4,7 @@ import 'package:attendance_app/appConfig/app_config.dart';
 import 'package:attendance_app/provider/dashboard_provider.dart';
 import 'package:attendance_app/ui/auth/auth_screen.dart';
 import 'package:attendance_app/ui/dashboard/component/build_alet_dialog.dart';
+import 'package:attendance_app/ui/setting/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +33,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    _dashboardProvider.getUserInfoPreference(key: 'imagePicked').then((value) {
+    _dashboardProvider.getUserImagePreference(key: 'imagePicked').then((value) {
       setState(() {
         _imagePath = value;
       });
@@ -40,7 +41,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
     AppConfig().init(context);
     return Drawer(
       child: Container(
-        color: Color(0xFF0A0E21),
+        color: Theme.of(context).scaffoldBackgroundColor,
         child: Column(
           children: [
             Container(
@@ -111,7 +112,10 @@ class _BuildDrawerState extends State<BuildDrawer> {
               ),
             ),
             drawerField(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(SettingScreen.routeName);
+              },
               title: 'Setting',
               icon: Icons.settings,
               context: context,
@@ -130,7 +134,6 @@ class _BuildDrawerState extends State<BuildDrawer> {
             ),
             drawerField(
               onTap: () {
-                _dashboardProvider.clearInfoPreference();
                 Navigator.of(context).pop();
                 Navigator.of(context)
                     .pushReplacementNamed(AuthScreen.routeName);
@@ -157,7 +160,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        color: Color(0xFF0A0E21),
+        color: Theme.of(context).scaffoldBackgroundColor,
         padding: EdgeInsets.symmetric(
             vertical: AppConfig.blockSizeVertical * 2,
             horizontal: AppConfig.blockSizeHorizontal * 4),
@@ -166,10 +169,9 @@ class _BuildDrawerState extends State<BuildDrawer> {
           children: [
             Text(
               title,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: AppConfig.blockSizeVertical * 3,
-              ),
+              style: Theme.of(context).textTheme.headline3.copyWith(
+                    fontSize: AppConfig.blockSizeVertical * 3,
+                  ),
             ),
             Icon(
               icon,

@@ -17,7 +17,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     AppConfig().init(context);
     return Scaffold(
       body: SafeArea(
@@ -30,12 +29,12 @@ class _AuthScreenState extends State<AuthScreen> {
               child: Column(
                 children: [
                   Container(
-                    height: size.height * 0.38,
+                    height: AppConfig.screenHeight * 0.38,
                     child: Center(
                       child: Image.asset('assets/images/auth_pic.png'),
                     ),
                   ),
-                  SizedBox(height: size.height * 0.04),
+                  SizedBox(height: AppConfig.screenHeight * 0.04),
                   BuildTextField(
                     onsaved: (value) {
                       setState(() {
@@ -58,7 +57,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     leadingIcon: Icons.person, //home_work_outlined
                   ),
                   SizedBox(
-                    height: size.height * 0.02,
+                    height: AppConfig.screenHeight * 0.02,
                   ),
                   BuildTextField(
                     onsaved: (value) {
@@ -74,7 +73,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     hintText: 'Enter Your Company ID',
                     leadingIcon: Icons.home_work_outlined,
                   ),
-                  SizedBox(height: size.height * 0.02),
+                  SizedBox(height: AppConfig.screenHeight * 0.02),
                   BuildTextField(
                     validator: (value) {
                       if (value.trim() == '' || value.length < 6)
@@ -86,7 +85,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     hintText: 'Enter Your Password',
                     leadingIcon: Icons.lock,
                   ),
-                  SizedBox(height: size.height * 0.03),
+                  SizedBox(height: AppConfig.screenHeight * 0.03),
                   GestureDetector(
                     onTap: onSubmit,
                     child: Container(
@@ -96,7 +95,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         borderRadius: BorderRadius.circular(25.0),
                         color: Theme.of(context).accentColor,
                       ),
-                      width: size.width / 2,
+                      width: AppConfig.screenWidth / 2,
                       child: Text('Login',
                           style: Theme.of(context).textTheme.button.copyWith(
                               fontSize: AppConfig.blockSizeVertical * 3)),

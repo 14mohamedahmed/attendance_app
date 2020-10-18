@@ -8,7 +8,7 @@ class ThemeProvider extends ChangeNotifier {
   //return color
   get getThemebackground => isDark ? Colors.black : Colors.white;
   get getleadingTextFieldColor => isDark ? Colors.yellow : Colors.deepPurple;
-
+  get getLeadingAppBarIconColor => isDark ? Colors.white : Colors.black;
   // return theme of the app
   getTheme(BuildContext context) =>
       isDark ? darkTheme(context) : lightTheme(context);

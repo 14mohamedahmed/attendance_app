@@ -1,3 +1,4 @@
+import 'package:attendance_app/appConfig/app_config.dart';
 import 'package:flutter/material.dart';
 
 class BuildColumnTable extends StatelessWidget {
@@ -14,10 +15,10 @@ class BuildColumnTable extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    AppConfig().init(context);
     return Container(
-      height: size.height * 0.2,
-      width: size.width * 0.4,
+      height: AppConfig.screenHeight * 0.2,
+      width: AppConfig.screenWidth * 0.4,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -47,7 +47,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
             Container(
               alignment: Alignment.center,
               color: Theme.of(context).accentColor,
-              height: MediaQuery.of(context).size.height * 0.2,
+              height: AppConfig.screenHeight * 0.2,
               padding: EdgeInsets.only(left: 15),
               child: Row(
                 children: [

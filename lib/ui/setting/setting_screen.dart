@@ -12,10 +12,10 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   ThemeProvider _themeProvider;
   @override
-  void initState() {
+  void didChangeDependencies() {
     _themeProvider = Provider.of<ThemeProvider>(context);
     AppConfig().init(context);
-    super.initState();
+    super.didChangeDependencies();
   }
 
   @override
@@ -23,7 +23,9 @@ class _SettingScreenState extends State<SettingScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: Container(),
+        iconTheme: IconThemeData(
+          color: _themeProvider.getLeadingAppBarIconColor,
+        ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: Text(
           'Setting',
@@ -46,7 +48,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 style: Theme.of(context)
                     .textTheme
                     .headline3
-                    .copyWith(fontSize: AppConfig.blockSizeVertical * 2.5),
+                    .copyWith(fontSize: AppConfig.blockSizeVertical * 3),
               ),
               Switch(
                 value: _themeProvider.isDark,

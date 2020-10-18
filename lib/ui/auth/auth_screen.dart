@@ -23,7 +23,7 @@ class _AuthScreenState extends State<AuthScreen> {
         child: SingleChildScrollView(
           child: Padding(
             padding:
-                EdgeInsets.symmetric(vertical: AppConfig.blockSizeVertical * 2),
+                EdgeInsets.symmetric(vertical: AppConfig.safeBlockVertical * 2),
             child: Form(
               key: _loginFormKey,
               child: Column(
@@ -98,7 +98,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       width: AppConfig.screenWidth / 2,
                       child: Text('Login',
                           style: Theme.of(context).textTheme.button.copyWith(
-                              fontSize: AppConfig.blockSizeVertical * 3)),
+                              fontSize: AppConfig.safeBlockVertical * 3)),
                     ),
                   ),
                 ],

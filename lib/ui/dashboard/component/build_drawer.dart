@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:attendance_app/appConfig/app_config.dart';
 import 'package:attendance_app/provider/dashboard_provider.dart';
+import 'package:attendance_app/ui/about_app/about_app.dart';
 import 'package:attendance_app/ui/auth/auth_screen.dart';
 import 'package:attendance_app/ui/dashboard/component/build_alet_dialog.dart';
 import 'package:attendance_app/ui/setting/setting_screen.dart';
@@ -76,7 +77,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
                           _userEmail,
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppConfig.blockSizeVertical * 2.5),
+                              fontSize: AppConfig.safeBlockVertical * 2.5),
                         ),
                       ),
                       SizedBox(height: 2),
@@ -91,7 +92,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
                                 'Choose',
                                 style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: AppConfig.blockSizeVertical * 3,
+                                  fontSize: AppConfig.safeBlockVertical * 3,
                                 ),
                               ),
                               content: BuildAlertDialog(),
@@ -103,7 +104,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
                           style: TextStyle(
                               decoration: TextDecoration.underline,
                               color: Colors.blue.shade800,
-                              fontSize: AppConfig.blockSizeVertical * 2),
+                              fontSize: AppConfig.safeBlockVertical * 2),
                         ),
                       ),
                     ],
@@ -124,7 +125,10 @@ class _BuildDrawerState extends State<BuildDrawer> {
               color: Colors.grey[900],
             ),
             drawerField(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(AboutApp.routeName);
+              },
               title: 'About App',
               icon: Icons.phone_android,
               context: context,
@@ -162,20 +166,20 @@ class _BuildDrawerState extends State<BuildDrawer> {
       child: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
         padding: EdgeInsets.symmetric(
-            vertical: AppConfig.blockSizeVertical * 2,
-            horizontal: AppConfig.blockSizeHorizontal * 4),
+            vertical: AppConfig.safeBlockVertical * 2,
+            horizontal: AppConfig.safeBlockHorizontal * 4),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               title,
               style: Theme.of(context).textTheme.headline3.copyWith(
-                    fontSize: AppConfig.blockSizeVertical * 3,
+                    fontSize: AppConfig.safeBlockVertical * 3,
                   ),
             ),
             Icon(
               icon,
-              size: AppConfig.blockSizeVertical * 4.5,
+              size: AppConfig.safeBlockVertical * 4.5,
               color: Theme.of(context).accentColor,
             ),
           ],

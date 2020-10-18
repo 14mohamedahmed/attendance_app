@@ -11,19 +11,19 @@ class BuildTable extends StatelessWidget {
     AppConfig().init(context);
     final columnTextStyle = TextStyle(
       color: Color(0xFFF2769A),
-      fontSize: AppConfig.blockSizeVertical * 2.5,
+      fontSize: AppConfig.safeBlockVertical * 2.5,
       fontWeight: FontWeight.bold,
     );
     final rowTextStyle = Theme.of(context)
         .textTheme
         .headline3
-        .copyWith(fontSize: AppConfig.blockSizeVertical * 2.5);
+        .copyWith(fontSize: AppConfig.safeBlockVertical * 2.5);
     final attendedTimeLeave = Theme.of(context)
         .textTheme
         .headline3
-        .copyWith(fontSize: AppConfig.blockSizeVertical * 2.5);
+        .copyWith(fontSize: AppConfig.safeBlockVertical * 2.5);
     final attendedCheckFalse = Theme.of(context).textTheme.headline3.copyWith(
-          fontSize: AppConfig.blockSizeVertical * 2.5,
+          fontSize: AppConfig.safeBlockVertical * 2.5,
           fontWeight: FontWeight.bold,
         );
     return NotificationListener<OverscrollIndicatorNotification>(
@@ -44,7 +44,7 @@ class BuildTable extends StatelessWidget {
                   data: Theme.of(context)
                       .copyWith(dividerColor: Color(0xFFF2769A)),
                   child: DataTable(
-                    columnSpacing: AppConfig.blockSizeVertical * 4,
+                    columnSpacing: AppConfig.safeBlockVertical * 4,
                     dividerThickness: 1,
                     columns: [
                       DataColumn(

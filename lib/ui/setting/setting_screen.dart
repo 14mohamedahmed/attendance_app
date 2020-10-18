@@ -37,8 +37,8 @@ class _SettingScreenState extends State<SettingScreen> {
         top: true,
         child: Padding(
           padding: EdgeInsets.symmetric(
-            vertical: AppConfig.blockSizeVertical * 2,
-            horizontal: AppConfig.blockSizeHorizontal * 5,
+            vertical: AppConfig.safeBlockVertical * 2,
+            horizontal: AppConfig.safeBlockHorizontal * 5,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +48,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 style: Theme.of(context)
                     .textTheme
                     .headline3
-                    .copyWith(fontSize: AppConfig.blockSizeVertical * 3),
+                    .copyWith(fontSize: AppConfig.safeBlockVertical * 3),
               ),
               Switch(
                 value: _themeProvider.isDark,

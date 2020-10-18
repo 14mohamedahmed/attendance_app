@@ -31,7 +31,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
     AppConfig().init(context);
     return Padding(
       padding:
-          EdgeInsets.symmetric(horizontal: AppConfig.blockSizeHorizontal * 10),
+          EdgeInsets.symmetric(horizontal: AppConfig.safeBlockHorizontal * 10),
       child: TextFormField(
         validator: widget.validator,
         onSaved: widget.onsaved,
@@ -43,7 +43,7 @@ class _BuildTextFieldState extends State<BuildTextField> {
         style: Theme.of(context)
             .textTheme
             .headline3
-            .copyWith(fontSize: AppConfig.blockSizeVertical * 2.5),
+            .copyWith(fontSize: AppConfig.safeBlockVertical * 2.5),
         textInputAction: widget.labelText == 'Password'
             ? TextInputAction.go
             : TextInputAction.next,
@@ -52,12 +52,12 @@ class _BuildTextFieldState extends State<BuildTextField> {
             : TextInputType.visiblePassword,
         decoration: InputDecoration(
           labelText: widget.labelText,
-          labelStyle: TextStyle(fontSize: AppConfig.blockSizeVertical * 2.5),
+          labelStyle: TextStyle(fontSize: AppConfig.safeBlockVertical * 2.5),
           hintText: widget.hintText,
           hintStyle: Theme.of(context).textTheme.headline4.copyWith(
-                fontSize: AppConfig.blockSizeVertical * 2.5,
+                fontSize: AppConfig.safeBlockVertical * 2.5,
               ),
-          errorStyle: TextStyle(fontSize: AppConfig.blockSizeVertical * 2),
+          errorStyle: TextStyle(fontSize: AppConfig.safeBlockVertical * 2),
           border: OutlineInputBorder(
               borderSide: BorderSide(color: Theme.of(context).accentColor),
               borderRadius: BorderRadius.circular(20.0)),

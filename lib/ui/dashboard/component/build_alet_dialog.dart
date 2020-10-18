@@ -67,7 +67,7 @@ class BuildAlertDialog extends StatelessWidget {
         title,
         style: TextStyle(
             color: Theme.of(context).accentColor,
-            fontSize: AppConfig.blockSizeVertical * 3),
+            fontSize: AppConfig.safeBlockVertical * 3),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:attendance_app/provider/dashboard_provider.dart';
 import 'package:attendance_app/provider/theme_provider.dart';
+import 'package:attendance_app/ui/about_app/about_app.dart';
 import 'package:attendance_app/ui/auth/auth_screen.dart';
 import 'package:attendance_app/ui/dashboard/dashboard_screen.dart';
 import 'package:attendance_app/ui/setting/setting_screen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           AuthScreen.routeName: (context) => AuthScreen(),
           DashboardScreen.routeName: (context) => DashboardScreen(),
           SettingScreen.routeName: (context) => SettingScreen(),
+          AboutApp.routeName: (context) => AboutApp(),
         },
       ),
     );

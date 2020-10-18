@@ -18,6 +18,11 @@ this app is showing the attendance date and time of the user.
 
 ![](assets/screenshots/choose_image.PNG)
 
+-- you can change app mode from dark to light (Default is Dark)
+
+![](assets/screenshots/dark_mode.PNG)
+
+
 -- Tools
 
 1- Provider 

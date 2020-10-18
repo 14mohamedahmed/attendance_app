@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 class AppConfig {
   static MediaQueryData _mediaQueryData;
-  static var _orientation;
   static double screenWidth;
   static double screenHeight;
   static double blockSizeHorizontal;
@@ -14,14 +13,8 @@ class AppConfig {
 
   void init(BuildContext context) {
     _mediaQueryData = MediaQuery.of(context);
-    _orientation = MediaQuery.of(context).orientation;
-    if (_orientation == Orientation.portrait) {
-      screenWidth = _mediaQueryData.size.width;
-      screenHeight = _mediaQueryData.size.height;
-    } else {
-      screenWidth = _mediaQueryData.size.height;
-      screenHeight = _mediaQueryData.size.width;
-    }
+    screenWidth = _mediaQueryData.size.width;
+    screenHeight = _mediaQueryData.size.height;
     blockSizeHorizontal = screenWidth / 100;
     blockSizeVertical = screenHeight / 100;
     _safeAreaHorizontal =

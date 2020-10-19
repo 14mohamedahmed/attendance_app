@@ -26,6 +26,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
 
   @override
   void didChangeDependencies() {
+    // get user information from Authentication screen.
     final mouleRoute =
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
     _userEmail = mouleRoute['email'];

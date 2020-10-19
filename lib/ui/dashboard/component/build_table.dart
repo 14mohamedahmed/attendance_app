@@ -9,6 +9,7 @@ class BuildTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppConfig().init(context);
+    // style of same widgets
     final columnTextStyle = TextStyle(
       color: Color(0xFFF2769A),
       fontSize: AppConfig.safeBlockVertical * 2.5,
@@ -45,19 +46,21 @@ class BuildTable extends StatelessWidget {
                       .copyWith(dividerColor: Color(0xFFF2769A)),
                   child: DataTable(
                     columnSpacing: AppConfig.safeBlockVertical * 4,
+                    headingRowHeight: AppConfig.screenHeight * 0.1,
+                    headingTextStyle: columnTextStyle,
+                    horizontalMargin: AppConfig.safeBlockHorizontal * 5,
                     dividerThickness: 1,
                     columns: [
                       DataColumn(
-                        label: Text('Attendance Data',
-                            style: columnTextStyle,
-                            textAlign: TextAlign.center),
+                        label: Text(
+                          'Attendance Data',
+                        ),
                       ),
                       DataColumn(
                         label: BuildColumnTable(
                           headText: 'Time to',
                           subTextL: 'Attend',
                           subTextR: 'Leave',
-                          columnTextStyle: columnTextStyle,
                         ),
                       ),
                       DataColumn(
@@ -65,7 +68,6 @@ class BuildTable extends StatelessWidget {
                           headText: 'Check Attendance',
                           subTextL: 'In',
                           subTextR: 'Out',
-                          columnTextStyle: columnTextStyle,
                         ),
                       ),
                     ],
@@ -94,7 +96,9 @@ class BuildTable extends StatelessWidget {
                                             : attendedTimeLeave,
                                       ),
                                     ),
-                                    SizedBox(width: 5),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
                                     Center(
                                       child: Text(
                                         data.leaveTime == ''
@@ -114,33 +118,11 @@ class BuildTable extends StatelessWidget {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     data.attendanceType[0].checkIn == true
-                                        ? Center(
-                                            child: Icon(
-                                              Icons.done,
-                                              color:
-                                                  Theme.of(context).accentColor,
-                                            ),
-                                          )
-                                        : Center(
-                                            child: Icon(
-                                              Icons.cancel,
-                                              color: Colors.red,
-                                            ),
-                                          ),
+                                        ? doneIcon(context)
+                                        : cancelIcon(),
                                     data.attendanceType[0].checkOut == true
-                                        ? Center(
-                                            child: Icon(
-                                              Icons.done,
-                                              color:
-                                                  Theme.of(context).accentColor,
-                                            ),
-                                          )
-                                        : Center(
-                                            child: Icon(
-                                              Icons.cancel,
-                                              color: Colors.red,
-                                            ),
-                                          ),
+                                        ? doneIcon(context)
+                                        : cancelIcon()
                                   ],
                                 ),
                               ),
@@ -156,6 +138,25 @@ class BuildTable extends StatelessWidget {
         ),
       ),
     );
-    // style of same widgets
+  }
+
+  Widget doneIcon(context) {
+    return Center(
+      child: Icon(
+        Icons.done,
+        size: AppConfig.safeBlockVertical * 4,
+        color: Theme.of(context).accentColor,
+      ),
+    );
+  }
+
+  Widget cancelIcon() {
+    return Center(
+      child: Icon(
+        Icons.cancel,
+        size: AppConfig.safeBlockVertical * 4,
+        color: Colors.red,
+      ),
+    );
   }
 }

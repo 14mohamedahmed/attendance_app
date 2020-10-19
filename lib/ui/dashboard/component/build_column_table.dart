@@ -5,13 +5,11 @@ class BuildColumnTable extends StatelessWidget {
   final String headText;
   final String subTextL;
   final String subTextR;
-  final TextStyle columnTextStyle;
 
   const BuildColumnTable({
     @required this.headText,
     @required this.subTextL,
     @required this.subTextR,
-    @required this.columnTextStyle,
   });
   @override
   Widget build(BuildContext context) {
@@ -22,14 +20,12 @@ class BuildColumnTable extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(headText, style: columnTextStyle, textAlign: TextAlign.center),
+          Text(headText, textAlign: TextAlign.center),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(subTextL,
-                  style: columnTextStyle, textAlign: TextAlign.center),
-              Text(subTextR,
-                  style: columnTextStyle, textAlign: TextAlign.center),
+              Text(subTextL, textAlign: TextAlign.center),
+              Text(subTextR, textAlign: TextAlign.center),
             ],
           )
         ],

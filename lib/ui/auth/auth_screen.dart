@@ -116,6 +116,7 @@ class _AuthScreenState extends State<AuthScreen> {
       _loginFormKey.currentState.save();
       Navigator.of(context)
           .pushReplacementNamed(DashboardScreen.routeName, arguments: {
+        // pass data to the dashboard screen
         'email': _userEmail,
         'compnayId': _companyId,
       });

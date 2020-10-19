@@ -9,6 +9,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  // Listen to dark theme
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(true),
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Color(0xFFFD6C6E)));
     return MultiProvider(
+      // intilaize all providers files here
+      // there is other way ==> intialize every provider file above every screen
       providers: [
         ChangeNotifierProvider(
           create: (context) => DashboardProvider(),

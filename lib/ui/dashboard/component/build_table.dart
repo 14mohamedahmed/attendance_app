@@ -44,7 +44,7 @@ class BuildTable extends StatelessWidget {
                   data: Theme.of(context)
                       .copyWith(dividerColor: Color(0xFFF2769A)),
                   child: DataTable(
-                    columnSpacing: AppConfig.safeBlockVertical * 2,
+                    columnSpacing: AppConfig.safeBlockVertical * 4,
                     dividerThickness: 1,
                     columns: [
                       DataColumn(
@@ -94,6 +94,7 @@ class BuildTable extends StatelessWidget {
                                             : attendedTimeLeave,
                                       ),
                                     ),
+                                    SizedBox(width: 5),
                                     Center(
                                       child: Text(
                                         data.leaveTime == ''

@@ -53,17 +53,20 @@ class _BuildDrawerState extends State<BuildDrawer> {
                 padding: EdgeInsets.only(left: 15),
                 child: Row(
                   children: [
-                    Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: _imagePath == null
-                              ? AssetImage('assets/images/profile_pic.png')
-                              : FileImage(File(_imagePath)),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: _changeProfile,
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: _imagePath == null
+                                ? AssetImage('assets/images/profile_pic.png')
+                                : FileImage(File(_imagePath)),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
@@ -83,23 +86,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
                         ),
                         SizedBox(height: 2),
                         GestureDetector(
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) => AlertDialog(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0)),
-                                title: Text(
-                                  'Choose',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: AppConfig.safeBlockVertical * 3,
-                                  ),
-                                ),
-                                content: BuildAlertDialog(),
-                              ),
-                            );
-                          },
+                          onTap: _changeProfile,
                           child: Text(
                             'Change Profile',
                             style: TextStyle(
@@ -153,6 +140,24 @@ class _BuildDrawerState extends State<BuildDrawer> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void _changeProfile() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+        title: Text(
+          'Choose',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: AppConfig.safeBlockVertical * 3,
+          ),
+        ),
+        content: BuildAlertDialog(),
       ),
     );
   }

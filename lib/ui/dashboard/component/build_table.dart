@@ -45,7 +45,7 @@ class BuildTable extends StatelessWidget {
                   data: Theme.of(context)
                       .copyWith(dividerColor: Color(0xFFF2769A)),
                   child: DataTable(
-                    columnSpacing: AppConfig.safeBlockVertical * 4,
+                    columnSpacing: AppConfig.safeBlockVertical * 5,
                     headingRowHeight: AppConfig.screenHeight * 0.1,
                     headingTextStyle: columnTextStyle,
                     horizontalMargin: AppConfig.safeBlockHorizontal * 5,

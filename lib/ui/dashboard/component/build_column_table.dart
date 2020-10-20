@@ -15,8 +15,7 @@ class BuildColumnTable extends StatelessWidget {
   Widget build(BuildContext context) {
     AppConfig().init(context);
     return Container(
-      height: AppConfig.screenHeight * 0.2,
-      width: AppConfig.screenWidth * 0.4,
+      width: AppConfig.screenWidth * 0.5,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

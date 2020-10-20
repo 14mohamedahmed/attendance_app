@@ -9,6 +9,7 @@ class BuildTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppConfig().init(context);
+
     // style of same widgets
     final columnTextStyle = TextStyle(
       color: Theme.of(context).accentColor,
@@ -27,6 +28,7 @@ class BuildTable extends StatelessWidget {
           fontSize: AppConfig.safeBlockVertical * 2.5,
           fontWeight: FontWeight.bold,
         );
+
     return NotificationListener<OverscrollIndicatorNotification>(
       onNotification: (overscroll) {
         overscroll.disallowGlow();
@@ -47,7 +49,6 @@ class BuildTable extends StatelessWidget {
                   child: DataTable(
                     columnSpacing: AppConfig.safeBlockVertical * 5,
                     headingTextStyle: columnTextStyle,
-                    horizontalMargin: AppConfig.safeBlockHorizontal * 5,
                     dividerThickness: 1,
                     columns: [
                       DataColumn(
@@ -94,9 +95,6 @@ class BuildTable extends StatelessWidget {
                                             ? attendedCheckFalse
                                             : attendedTimeLeave,
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
                                     ),
                                     Center(
                                       child: Text(

@@ -11,7 +11,7 @@ class BuildTable extends StatelessWidget {
     AppConfig().init(context);
     // style of same widgets
     final columnTextStyle = TextStyle(
-      color: Color(0xFFF2769A),
+      color: Theme.of(context).accentColor,
       fontSize: AppConfig.safeBlockVertical * 2.5,
       fontWeight: FontWeight.bold,
     );
@@ -46,7 +46,6 @@ class BuildTable extends StatelessWidget {
                       .copyWith(dividerColor: Color(0xFFF2769A)),
                   child: DataTable(
                     columnSpacing: AppConfig.safeBlockVertical * 5,
-                    headingRowHeight: AppConfig.screenHeight * 0.1,
                     headingTextStyle: columnTextStyle,
                     horizontalMargin: AppConfig.safeBlockHorizontal * 5,
                     dividerThickness: 1,

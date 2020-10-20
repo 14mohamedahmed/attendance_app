@@ -10,7 +10,7 @@ class AboutApp extends StatelessWidget {
       '''team by logging in with an account consisting of the company ID, email, and password.
 You will be directed to the dashboard page with your attendance and absence dates.''';
   final String part1 =
-      '''     This application is a registration of attendance and absence by day and date.
+      '''This application is a registration of attendance and absence by day and date.
 You can use this program if you are a member of the ''';
   @override
   Widget build(BuildContext context) {

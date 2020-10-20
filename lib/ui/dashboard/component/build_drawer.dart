@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:attendance_app/appConfig/app_config.dart';
+import 'package:attendance_app/provider/auth_provider.dart';
 import 'package:attendance_app/provider/dashboard_provider.dart';
 import 'package:attendance_app/ui/about_app/about_app.dart';
 import 'package:attendance_app/ui/auth/auth_screen.dart';
@@ -18,28 +19,31 @@ class _BuildDrawerState extends State<BuildDrawer> {
   var _imagePath;
   var _userEmail;
   DashboardProvider _dashboardProvider;
+  AuthProvider _authProvider;
   @override
   void initState() {
     _dashboardProvider = Provider.of<DashboardProvider>(context, listen: false);
+    _authProvider = Provider.of<AuthProvider>(context, listen: false);
     super.initState();
   }
 
   @override
   void didChangeDependencies() {
-    // get user information from Authentication screen.
-    final mouleRoute =
-        ModalRoute.of(context).settings.arguments as Map<String, dynamic>;
-    _userEmail = mouleRoute['email'];
-    super.didChangeDependencies();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     _dashboardProvider.getUserImagePreference(key: 'imagePicked').then((value) {
       setState(() {
         _imagePath = value;
       });
     });
+    _authProvider.getUserDataPreference(key: 'email').then((value) {
+      setState(() {
+        _userEmail = value;
+      });
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     AppConfig().init(context);
     return Drawer(
       child: Container(
@@ -79,7 +83,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
                         Container(
                           width: 180,
                           child: Text(
-                            _userEmail,
+                            _userEmail ?? 'Loading....',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: AppConfig.safeBlockVertical * 2.5),

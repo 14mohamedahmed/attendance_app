@@ -1,3 +1,4 @@
+import 'package:attendance_app/provider/auth_provider.dart';
 import 'package:attendance_app/provider/dashboard_provider.dart';
 import 'package:attendance_app/provider/theme_provider.dart';
 import 'package:attendance_app/ui/about_app/about_app.dart';
@@ -8,12 +9,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+var _userEmail;
+
+Future<void> main() async {
   // Listen to dark theme
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(true),
-      child: MyApp(),
+      child: ChangeNotifierProvider(
+        create: (context) => AuthProvider(),
+        child: Consumer<AuthProvider>(
+          builder: (ctx, authPtovider, child) {
+            authPtovider
+                .getUserDataPreference(key: 'email')
+                .then((value) => _userEmail = value);
+            return MyApp();
+          },
+        ),
+      ),
     ),
   );
 }
@@ -28,6 +41,9 @@ class MyApp extends StatelessWidget {
       // there is other way ==> intialize every provider file above every screen
       providers: [
         ChangeNotifierProvider(
+          create: (context) => AuthProvider(),
+        ),
+        ChangeNotifierProvider(
           create: (context) => DashboardProvider(),
         ),
       ],
@@ -35,7 +51,8 @@ class MyApp extends StatelessWidget {
         title: 'Attendance App',
         debugShowCheckedModeBanner: false,
         theme: Provider.of<ThemeProvider>(context).getTheme(context),
-        initialRoute: AuthScreen.routeName,
+        initialRoute:
+            _userEmail == '' ? AuthScreen.routeName : DashboardScreen.routeName,
         routes: {
           AuthScreen.routeName: (context) => AuthScreen(),
           DashboardScreen.routeName: (context) => DashboardScreen(),

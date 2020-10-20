@@ -1,7 +1,9 @@
 import 'package:attendance_app/appConfig/app_config.dart';
+import 'package:attendance_app/provider/auth_provider.dart';
 import 'package:attendance_app/ui/auth/component/build_text_field.dart';
 import 'package:attendance_app/ui/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AuthScreen extends StatefulWidget {
   static final String routeName = '/authScreen';
@@ -114,12 +116,9 @@ class _AuthScreenState extends State<AuthScreen> {
     FocusScope.of(context).unfocus();
     if (_loginFormKey.currentState.validate()) {
       _loginFormKey.currentState.save();
-      Navigator.of(context)
-          .pushReplacementNamed(DashboardScreen.routeName, arguments: {
-        // pass data to the dashboard screen
-        'email': _userEmail,
-        'compnayId': _companyId,
-      });
+      await Provider.of<AuthProvider>(context, listen: false)
+          .setUserDataPreference(key: 'email', info: _userEmail);
+      Navigator.of(context).pushReplacementNamed(DashboardScreen.routeName);
     }
   }
 }

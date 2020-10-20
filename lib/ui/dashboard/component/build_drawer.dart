@@ -28,7 +28,7 @@ class _BuildDrawerState extends State<BuildDrawer> {
   }
 
   @override
-  void didChangeDependencies() {
+  Widget build(BuildContext context) {
     _dashboardProvider.getUserImagePreference(key: 'imagePicked').then((value) {
       setState(() {
         _imagePath = value;
@@ -39,14 +39,6 @@ class _BuildDrawerState extends State<BuildDrawer> {
         _userEmail = value;
       });
     });
-    _authProvider
-        .getUserDataPreference(key: 'email')
-        .then((value) => print(value));
-    super.didChangeDependencies();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     AppConfig().init(context);
     return Drawer(
       child: Container(

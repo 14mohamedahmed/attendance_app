@@ -15,7 +15,6 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   final _loginFormKey = GlobalKey<FormState>();
   var _userEmail = '';
-  var _companyId = '';
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +61,6 @@ class _AuthScreenState extends State<AuthScreen> {
                     height: AppConfig.screenHeight * 0.02,
                   ),
                   BuildTextField(
-                    onsaved: (value) {
-                      setState(() {
-                        _companyId = value;
-                      });
-                    },
                     validator: (value) {
                       if (value.trim() == '') return 'Enter Valid Company ID';
                       return null;

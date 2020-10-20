@@ -39,6 +39,9 @@ class _BuildDrawerState extends State<BuildDrawer> {
         _userEmail = value;
       });
     });
+    _authProvider
+        .getUserDataPreference(key: 'email')
+        .then((value) => print(value));
     super.didChangeDependencies();
   }
 
@@ -130,8 +133,11 @@ class _BuildDrawerState extends State<BuildDrawer> {
                 color: Colors.grey[900],
               ),
               drawerField(
-                onTap: () {
+                onTap: () async {
                   Navigator.of(context).pop();
+                  await _authProvider
+                      .removeUserKey('email')
+                      .then((value) => print('done'));
                   Navigator.of(context)
                       .pushReplacementNamed(AuthScreen.routeName);
                 },

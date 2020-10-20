@@ -15,4 +15,9 @@ class AuthProvider extends ChangeNotifier {
   Future<String> getUserDataPreference({@required String key}) async {
     return _sharedPrefsPlugin.getUserInfoPreference(key);
   }
+
+  // clear user information by specific key
+  Future<void> removeUserKey(String key) async {
+    return _sharedPrefsPlugin.clearInfoPreference(key);
+  }
 }
